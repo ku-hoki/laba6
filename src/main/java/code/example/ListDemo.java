@@ -9,6 +9,7 @@ public class ListDemo extends Human{
         String surName = person.getSurname();
         for (Human human: humanList){
             if (human.getSurname().equals(surName))
+
         }
     }
 }
