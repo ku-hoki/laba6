@@ -14,6 +14,7 @@ public class ListDemo extends Human{
         for (Human human: humanList){
             if (human.getSurname().equals(surName) && !human.equals(person)){
                 result.add(human);
+
             }
         }
         return result;
