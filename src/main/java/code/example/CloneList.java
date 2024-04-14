@@ -10,7 +10,7 @@ public class CloneList extends Human{
     }
 
     //создание копии входного списка без заданного человека
-    public List<Human> copyListWithoutOnePerson(List<Human> humanList, Human person){
+    public static List<Human> copyListWithoutOnePerson(List<Human> humanList, Human person){
         List<Human> copiedList = new ArrayList<>(humanList);
         copiedList.remove(person);
         return copiedList;

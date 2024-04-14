@@ -5,17 +5,14 @@ import java.util.*;
 
 public class ExclusionSets {
 
-    public List<Set<Integer>> findSetsWithoutCrossing(List<Set<Integer>> firstSet, List<Set<Integer>> secondSet){
+    //поиск множества, которое не пересекается с заданным множеством
+    public static List<Set<Integer>> findSetsWithoutCrossing(List<Set<Integer>> firstSet, Set<Integer> secondSet){
 
-        List<Set<Integer>> resultSets = new ArrayList<>();
+        List<Set<Integer>> interimSet = new ArrayList<>(firstSet);
         for (Set<Integer> set: firstSet){
-            List<Set<Integer>> intersectionSets = new ArrayList<>(Collections.singletonList(new HashSet<>(set)));
-            intersectionSets.retainAll(secondSet);//нахождение пересечений множеств first и second
-
-            if (intersectionSets.isEmpty()){//если результат пересечения пустой, то они не пересекаются
-                resultSets.add(set);
-            }
+            set.removeAll(secondSet);
         }
-        return resultSets;
+        interimSet.removeIf(Set::isEmpty);
+        return interimSet;
     }
 }
