@@ -13,6 +13,11 @@ public class ExclusionSets {
             set.removeAll(secondSet);
         }
         interimSet.removeIf(Set::isEmpty);
+
+        if (firstSet.isEmpty()){
+            throw new IllegalArgumentException("error");
+        }
         return interimSet;
+
     }
 }

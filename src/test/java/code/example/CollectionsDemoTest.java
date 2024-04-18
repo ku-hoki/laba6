@@ -20,6 +20,24 @@ public class CollectionsDemoTest {
     }
 
     @Test
+    void testCountStringStartNull(){
+
+        List<String> stroki = new ArrayList<>();
+        stroki.add("pina-colada");
+        stroki.add("banana");
+        stroki.add("pineapple");
+
+        try {
+            CollectionsDemo.countStringStartWith(stroki, 'z');
+            fail("Expected IllegalArgumentException to be thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("No strings start with the specified character", e.getMessage());
+        }
+
+    }
+
+
+    @Test
     void testFindPeopleWithSameSurname(){//тест на поиск однофамильцев
         Human person1 = new Human("Brown", "Tom", "Andreevich", 20);
         Human person2 = new Human("Brown", "Tim", "Vladimir", 21);
@@ -67,7 +85,23 @@ public class CollectionsDemoTest {
 
         assertEquals(expected, ExclusionSets.findSetsWithoutCrossing(firstSets, targetSet));
     }
+    @Test
+    void testFindExclusionSetsNull(){
 
+        List<Set<Integer>> inputSets = List.of();
+
+        Set<Integer> targetSet = new HashSet<>();
+        targetSet.add(2);
+        targetSet.add(4);
+
+        try {
+            ExclusionSets.findSetsWithoutCrossing(inputSets, targetSet);
+            fail("the input list is empty");
+        }catch (IllegalArgumentException e) {
+            assertEquals("error", e.getMessage());
+        };
+
+    }
     @Test
     void testCopyListWithoutOnePerson(){
         Human person1 = new Human("Brown", "Tom", "Andreevich", 20);
